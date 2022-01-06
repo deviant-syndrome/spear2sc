@@ -4,10 +4,10 @@ spear2sc
 This package provides utilities to read SPEAR_ particle files,
 perform basic analysis on them and also convert them to a CSV file, that can be then directly read by SuperCollider_.
 It reads the basic Spear format which is just a list of sinusoidal signals each classified with frequency, amplitude and temporal position.
-When the Allows you to play particle-resynthezied samples in SuperCollider.
+When conversion is done, it allows you to play particle-resynthezied samples in SuperCollider (sample code included).
 This package provides the above functionality in form of both a set of API methods, as well, a command line executable:
 
-You can refer to this HTML-rendered Jupyter notebook to see the examples of API usage.
+You can refer to this  HTML-rendered Jupyter notebook_ to see the examples of API usage.
 
 Installation
 ============
@@ -15,15 +15,15 @@ Requires Python 3. If this is not installed, download and install: https://www.p
 
 No official PIP package yet. You can easily install it from source::
 
-    $ git clone hell
-    $ cd there
+    $ git clone https://github.com/deviant-syndrome/spear2sc
+    $ cd spear2sc
     $ pip install -e ./
 
 This will install a library and an executable. ``spear2sc`` command will be available from your terminal.
 If you're are not interested in using imports, provided by this package, you can bypass installing and use it directly from the command line::
 
-    $ git clone hell
-    $ cd there
+    $ git clone https://github.com/deviant-syndrome/spear2sc
+    $ cd spear2sc
     $ python -m spear2sc choir1.txt -d=1.7 -a=0.001 --plot
 
 Command Line Usage
@@ -107,7 +107,7 @@ Example SuperCollider code to read and play this file would be the following::
 
 .. _SPEAR: https://www.klingbeil.com/spear/
 .. _SuperCollider: https://supercollider.github.io/
-
+.. _notebook: https://htmlpreview.github.io/?https://github.com/deviant-syndrome/spear2sc/blob/ae4da39f6e94acaa4a0ce1bcc310fea3630003a0/example.html
 Future Improvements
 ===================
 * Particle time offsets support in format
@@ -126,4 +126,4 @@ http://gehrcke.de/2014/02/distributing-a-python-command-line-application/
 Acknowledgements
 ================
 Code was reading a SPEAR file was based on the work of Stephen Bradshaw, which could be found in this repository:
-https://github.com/stephenjbradshaw
+https://github.com/stephenjbradshaw/SPEAR_to_MIDI
