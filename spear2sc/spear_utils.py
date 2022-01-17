@@ -25,7 +25,7 @@ def process_line(line):
             time_point.append(item)
         partial.append(time_point)
 
-    return partial
+    return pad_duration(partial)
 
 
 index_time = 0
@@ -36,7 +36,7 @@ index_amp = 2
 def get_durations(partial):
     """Converts partial's absolute time offsets into durations
 
-    Note, that the size of duration's list is one element smaller than partial's entry count
+    Note, that the size of duration's list is one element smaller than partial's entry count.
 
     :param partial: Sound partial, [<time in s>, <frequency in Hz>, <amplitude 0.0-1.0>]
     :type partial: list
@@ -47,3 +47,23 @@ def get_durations(partial):
     for x in range(1, len(partial)):
         res.append((partial[x][index_time] - partial[x - 1][index_time]))
     return res
+
+
+def pad_duration(partial):
+    """Pads the envelope of the partial if it has a time offset
+
+     Auxiliary node added to the envelope to smooth the transition.
+     Coefficients are empirical
+
+    :param partial:
+    :type partial: list
+    :return:
+    :rtype: list
+    """
+    offset = partial[0][index_time]
+    if offset > 0:
+        next_node = partial[1]
+        pad_node = [[0, 0, 0], [offset * 0.8, next_node[index_freq] * 0.7, next_node[index_amp] * 0.7]]
+        padded_partial = pad_node + partial
+        return padded_partial
+    return partial
