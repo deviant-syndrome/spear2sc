@@ -63,7 +63,7 @@ def pad_duration(partial):
     offset = partial[0][index_time]
     if offset > 0:
         next_node = partial[1]
-        pad_node = [[0, 0, 0], [offset * 0.8, next_node[index_freq] * 0.7, next_node[index_amp] * 0.7]]
+        pad_node = [[0, 0, 0], [offset * 0.99, 0, 0], [offset * 0.999, next_node[index_freq] * 0.9, next_node[index_amp] * 0.9]]
         padded_partial = pad_node + partial
         return padded_partial
     return partial

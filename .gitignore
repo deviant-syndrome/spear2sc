@@ -1,4 +1,4 @@
 .idea
 *.egg-info
-*.pyc
+spear2sc/*.pyc
 spear2sc/__pycache__
