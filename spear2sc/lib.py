@@ -15,6 +15,7 @@ from publication import publish
 
 from .analysis import get_amp_mean, get_total_duration, get_amp_envelope, get_durations_thresh
 from .spear_utils import process_line, get_durations, index_amp, index_freq
+from .preview import preview
 
 
 def read_spear_file(input_file):
@@ -54,6 +55,7 @@ def convert(input_file, output_file, options):
 
     num_partials_written = 0
     num_partials_read = 0
+    partials_preview = []
     for partial in partials:
         num_partials_read = num_partials_read + 1
         if get_total_duration(partial) >= dur_thresh and get_amp_mean(partial) >= amp_thresh and num_partials_written <= max_partials:
@@ -61,7 +63,9 @@ def convert(input_file, output_file, options):
             w.writerow(list(map(lambda p: p[index_freq], partial)))
             w.writerow(list(map(lambda p: p[index_amp], partial)))
             num_partials_written = num_partials_written + 1
+            partials_preview.append(partial)
     f.close()
+    preview(partials_preview)
     return num_partials_read, num_partials_written
 
 

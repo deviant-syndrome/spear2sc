@@ -27,7 +27,8 @@ setup(
     install_requires=[
         'numpy',
         'plotille',
-        'publication'
+        'publication',
+        "supriya"
     ],
     version = version,
     description = "SPEAR2SC. SuperCollider-friendly Spear file reader.",
