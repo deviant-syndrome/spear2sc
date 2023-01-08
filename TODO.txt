@@ -1,0 +1,12 @@
+Future features of this project would include:
+Breaking down the sound into a series of wavetables
+
+Technically, this could be achieved doing the following:
+1. Once we have our SPEAR file read, we can determine it's duration
+2. We divide this duration in, say, 10 intervals 
+3. We take all the particles in this interval
+4. For each partial we consider it's "principal frequency", which was exposed the most, in terms of amplitude and duration
+5. We construct the final waveform creating a weighting sum of "principal frequencies" (need to decide of waveform resolution)
+ 
+
+
